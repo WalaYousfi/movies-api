@@ -1,18 +1,15 @@
 import express from "express";
-import {
-  addReview,
-  getReviewByFilmId,
-} from "../controllers/review.controller.js";
+import * as reviewsController from "../controllers/review.controller.js";
 import { asyncHandler } from "../utils/helpers.js";
 import { authenticateUser } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.post("/addReview", authenticateUser, asyncHandler(addReview));
-router.get(
-  "/getRview",
+router.post(
+  "/:filmId",
   authenticateUser,
-  asyncHandler(getReviewByFilmId)
+  asyncHandler(reviewsController.createReview)
 );
+router.get("/getRview", authenticateUser, asyncHandler(reviewsController.getReviewByFilmId));
 
 export default router;

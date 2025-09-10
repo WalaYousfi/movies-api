@@ -26,6 +26,6 @@ router.delete(
   asyncHandler(authenticateAdmin),
   asyncHandler(filmController.deleteFilm)
 );
-router.get("/", authenticateAdmin, asyncHandler(filmController.getFilmById));
+router.get("/:id", asyncHandler(filmController.getFilm));
 
 export default router;

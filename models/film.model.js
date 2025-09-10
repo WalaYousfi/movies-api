@@ -4,7 +4,7 @@ import sequelize from "../utils/db.js";
 const Film = sequelize.define("films", {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,   //auto increment in SQLite
+    autoIncrement: true, //auto increment in SQLite
     primaryKey: true, // mark as primary key // unique PK
   },
   name: {
@@ -21,4 +21,7 @@ const Film = sequelize.define("films", {
   },
 });
 
+Film.associate = (models) => {
+  Film.hasMany(models.Review, { foreignKey: "filmId", as: "reviews" });
+};
 export { Film };

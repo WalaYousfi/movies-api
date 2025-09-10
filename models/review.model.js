@@ -1,45 +1,31 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../utils/db.js";
-import { Film } from "./index.js";
 
 const Review = sequelize.define("reviews", {
-  // Foreign key to associate with Film
-  filmId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Film, // References the films table //Direct model reference
-      key: "id",
-    },
-  },
-
   // Rating (from 1 to 5 stars)
   rating: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    validate: {
-      min: 1,
-      max: 5,
-    },
   },
 
-  comment: {
-    type: DataTypes.TEXT,
-    allowNull: true, // Optional comment
-  },
-
-  // Reviewer name
-  reviewer: {
+  text: {
     type: DataTypes.STRING,
+    allowNull: false, // Optional comment
+  },
+  userId: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
-
-  // Review date
-  reviewDate: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+  filmId: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
 });
 
+Review.associate = (models) => {
+  // each review is tied to a single movie
+  Review.belongsTo(models.Film, { foreignKey: "filmId", as: "film" });
+  // each review is tied to a single user
+  Review.belongsTo(models.User, { foreignKey: "userId", as: "user" });
+};
 export { Review };

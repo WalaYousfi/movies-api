@@ -32,8 +32,8 @@ export async function deleteFilm(req, res) {
   res.status(200).json({ message: "film deleted successfully" });
 }
 
-export async function getFilmById(req, res) {
-  const film = await Film.findByPk(req.body.filmId);
+export async function getFilm(req, res) {
+  const film = await Film.findByPk(req.params.id);
   if (film) return res.status(200).json({ message: "success", film });
   else return res.status(404).json({ error: "film not found" });
 }

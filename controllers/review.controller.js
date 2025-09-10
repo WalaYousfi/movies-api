@@ -1,13 +1,13 @@
 import { Review } from "../models/index.js";
 
-export async function addReview(req, res) {
-  const newReview = await Review.create({
-    filmId: req.body.filmId,
+export async function createReview(req, res) {
+  const review = await Review.create({
     rating: req.body.rating,
-    comment: req.body.comment,
-    reviewer: req.body.reviewer,
+    text: req.body.text,
+    filmId: +req.params.filmId, // we made castTo from string to  number (+)
+    userId: req.user.id,
   });
-  return res.status(201).json({ message: "success", newReview });
+  return res.status(201).json({ message: "success", review });
 }
 
 export async function getReviewByFilmId(req, res) {

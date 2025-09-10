@@ -3,7 +3,7 @@ import morgan from "morgan";
 import { initDB } from "./utils/db.js";
 import authRouter from "./routes/auth.routes.js";
 import filmRouter from "./routes/film.routes.js";
-import ReviewRouter from "./routes/review.routes.js";
+import reviewRouter from "./routes/review.routes.js";
 import { createDefaultAdmin } from "./utils/admin.js";
 const port = process.env.PORT || 3000;
 
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/films", filmRouter);
-app.use("/api/reviews", ReviewRouter);
+app.use("/api/reviews", reviewRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: "not found" });
