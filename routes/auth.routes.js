@@ -4,7 +4,8 @@ import { asyncHandler } from "../utils/helpers.js";
 import { authenticateUser } from "../middlewares/auth.middleware.js";
 const router = express.Router();
 
-router.post("/login", asyncHandler(authController.login));
+router.post("/login", asyncHandler(authController.login));  //change it to this router.post("/login",loginValidator(), asyncHandler(authController.login));
+
 
 router.post("/register", asyncHandler(authController.register));
 

@@ -10,6 +10,21 @@ router.post(
   authenticateUser,
   asyncHandler(reviewsController.createReview)
 );
-router.get("/getRview", authenticateUser, asyncHandler(reviewsController.getReviewByFilmId));
+router.get("/:filmId", asyncHandler(reviewsController.getReviewByFilmId));
 
 export default router;
+
+
+
+//watchList {movieId , userId}
+//associate belongTo (user & film)
+//user.hasMany to watchList
+//film.hasMany to watchList
+//controller: addToWatchList (+ to filmId)
+// getWatchList (include)
+// removeFromWatchList (destroy) 
+// research joi validation (backend)
+//why use validation and where exactly
+//search npm i express-validator
+// create folder (validators/auth.validators.js : create function loginValidator())
+// create middleware (validator.middleware.js) : create function validateRequest()
