@@ -42,9 +42,3 @@ export async function getCurrentUser(req, res) {
   res.json({ id: user.id, name: user.name, email: user.email });
 }
 
-
-// createFilm , edit, delete
-// getAllFilm getfilmById
-// addReview getReviewByMovvieId
-// validation 
-// name genre releaseDate {date} 

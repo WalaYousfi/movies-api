@@ -23,7 +23,8 @@ export default router;
 //controller: addToWatchList (+ to filmId)
 // getWatchList (include)
 // removeFromWatchList (destroy) 
-// research joi validation (backend)
+
+// search joi validation (backend)
 //why use validation and where exactly
 //search npm i express-validator
 // create folder (validators/auth.validators.js : create function loginValidator())

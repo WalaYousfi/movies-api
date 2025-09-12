@@ -23,5 +23,7 @@ const Film = sequelize.define("films", {
 
 Film.associate = (models) => {
   Film.hasMany(models.Review, { foreignKey: "filmId", as: "reviews" });
+
+  Film.hasMany(models.WatchList, { foreignKey: "filmId", as: "watchLists" });
 };
 export { Film };

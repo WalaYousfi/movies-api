@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import { User } from "../models/index.js";
 
 export async function authenticateAdmin(req, res, next) {
